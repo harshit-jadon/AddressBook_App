@@ -21,26 +21,60 @@
         <div class="main-div">         
             <form class="form">
                 <div class="person-header">
-                    <div clas="person-div"> PERSON ADDRESS FORM </div>
+                    <div class="person-div"> PERSON ADDRESS FORM </div>
                     <a href="homepage.html"> <img src="cross.png" alt="cross" class="cross-button"></a>
                 </div>
-                <!-- <div>
-                    <label for="fullName">Full Name</label>
-                    <input class="input" type="text" id="fullName" name="name" placeholder="name" required>
+                <div class="form-div">
+                    <div class="form-internal-div">
+                        <label for="fullName">Full Name</label>
+                        <input class="input" type="text" id="fullName" name="name" placeholder="name" required>
+                        <error-output class="text-error" for="text"></error-output>
+
+                    </div>
+                    <div class="form-internal-div">
+                        <label for="phoneNumber">Phone Number</label>
+                        <input class="input" type="tel" id="phoneNumber" name="number" placeholder="number" required>
+                        <error-output class="text-error" for="text"></error-output>
+
+                    </div>
+                    <div class="form-internal-div">
+                        <label for="address">Address</label>
+                        <input class="input addressInput" type="tel" id="address" name="address" placeholder="address" style="height:50px" required>
+                    </div>
+                    <div class="select-div">
+                        <div class="form-internal-div">
+                            <label for="city">City</label>
+                            <select class="select-content" name="city" id="city" required>
+                                <option value="Aligarh">Aligarh</option>
+                                <option value="Bulandshahr">Bulandshahr</option>
+                                <option value="Meerut">Meerut</option>
+                                <option value="Kanpur">Kanpur</option>
+                                <option value="Lucknow">Lucknow</option>
+                            </select>
+                        </div>
+                        <div class="form-internal-div">
+                            <label for="state">State</label>
+                            <select class="select-content" name="state" id="state">
+                                <option value="Andra Pradesh">Andra Pradesh</option>
+                                <option value="Bihar">Bihar</option>
+                                <option value="Delhi">Delhi</option>
+                                <option value="Uttarakhand">Uttarakhand</option>
+                                <option value="Utta Pradesh">Uttar Pradesh</option>
+                            </select>
+                        </div>
+                        <div class="form-internal-div">
+                            <label for="zipcode">Zip Code</label>
+                            <input class="input zipcode-input" type="tel" id="zipcode" name="zipcode" placeholder="enter city code" required>
+                            <error-output class="text-error" for="text"></error-output>
+
+                        </div>
+                    </div>  
+                        <div class="button-div">
+                            <button class="add-button button" type="add">Add</button>
+                            <button class="reset-button button" type="reset">Reset</button>
+                        </div>
                 </div>
-                <div>
-                    <label for="phoneNumber">Phone Number</label>
-                    <input class="input" type="tel" id="phoneNumber" name="number" placeholder="Number" required>
-                </div>
-                <div>
-                    <label for="address">Address</label>
-                    <input class="input" type="tel" id="address" name="address" placeholder="address" required>
-                </div>
-                <div>
-                    <label for="city">City</label>
-                    <input class="input" type="tel" id="address" name="address" placeholder="address" required>
-                </div> -->
-            </form>   
-        </div> 
+            </form>          
+        </div>    
     </body>
 </html>
