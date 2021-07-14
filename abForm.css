@@ -1,0 +1,44 @@
+body{
+    height: 100%;
+    background-color: #E2E2E2;
+}
+.header-content{
+    background-color: white;
+}
+.header-div{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    width: 25%;
+}
+.img-div{
+    height: 40px;
+}
+.header-div-div{
+    margin-left: 5px;
+    text-transform: uppercase;
+    font: normal normal bold 22px/25px Montserrat;
+    opacity: 1;
+}
+.address-span{
+    color:#008CFF ;
+}
+.employee-span{
+    color: #42515F;
+}
+/* .main-div{
+    background-color: red;
+    display: flex;
+   margin:60px 400px 100px 400px;
+} */
+.form{
+    background-color: #008CFF;
+}
+.person-header{
+
+}
+.cross-button{
+    height: 40px;
+}
