@@ -1,3 +1,4 @@
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px){}
 html{
     height: 100%;
 
@@ -42,6 +43,7 @@ body{
 .form{
     background-color: white;
     width: 100%;
+    height: 120%;
     
 }
 .person-header{
@@ -50,7 +52,7 @@ body{
     justify-content: center;
     align-items: center;
     background-color: #008CFF;
-    font: normal normal normal 22px/25px Montserrat;
+    font: normal normal normal 28px/37px Roboto;
     color: white;
     padding: 30px;
     border-top-left-radius: 10px;
@@ -73,11 +75,16 @@ body{
     display: flex;
     flex-direction: column;
     padding: 10px;
-    font: normal normal bold 15px/20px Montserrat;
-}.input{
+    font: normal normal normal 18px/24px Roboto;
+}
+.label{
+    font: normal normal normal 18px/24px Roboto;
+    color: #42515F;
+}
+.input{
     display:inline-block;
     margin-top: 5px;
-    height: 20px;
+    height: 30px;
     padding:5px;
 }
 .select-div{
@@ -100,7 +107,7 @@ body{
 .button-div{
     margin: 10px;
     display: inline-block;
-    margin-left: 655px;
+    margin-left: 650px;
 }
 .button{
     background-color:#E2E2E2;
