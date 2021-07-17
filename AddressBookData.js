@@ -10,26 +10,28 @@ class AddressBookData{
         else{throw "Incorrect name";}
     };
     
-    get phoneNumber(){ return this.phoneNumber};
-    set phoneNumber(phoneNumber){  
-        let phoneRegex = RegExp('^([9]{1})([234789]{1})([0-9]{8})$');
-        if(phoneRegex.test(phoneNumber)){
-            this.phoneNumber = phoneNumber;
-        }else{throw "Incorrect PhoneNumber";}
-        };
+    // get phoneNumber(){ return this._phoneNumber};
+    // set phoneNumber(phoneNumber){  
+    //     let phoneRegex = RegExp("\\d{2}\\d{10}");
+    //     if(phoneRegex.test(phoneNumber)){
+    //         this._phoneNumber = phoneNumber;
+    //     }else{throw "Incorrect PhoneNumber";}
+    //     };
+    get phoneNumber(){ return this._phoneNumber};
+    set phoneNumber(phoneNumber){  this._phoneNumber = phoneNumber;};
+    get address(){ return this._address};
+    set address(address){  this._address = address};
 
-    get address(){ return this.address};
-    set address(address){  this.address = address};
+    get city(){ return this._city};
+    set city(city){  this._city = city};
 
-    get city(){ return this.city};
-    set city(city){  this.city = city};
+    get state(){ return this._state};
+    set state(state){  this._state = state};
 
-    get state(){ return this.state};
-    set state(state){  this.state = state};
+    get zipCode(){ return this._zipCode};
+    set zipCode(zipCode){ this._zipCode = zipCode};
 
-    get zipCode(){ return this.zipCode};
-    set zipCode(zipCode){  this.zipCode = zipCode};
-
+    
     toString(){
         return "Name= " + this.fullName 
             + ",Phone Number= " + this.phoneNumber 

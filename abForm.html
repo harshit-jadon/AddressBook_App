@@ -2,6 +2,8 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel='icon' href="headerLogo.png">
         <title>AddressBook Form</title>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,600;1,500&display=swap">
@@ -21,23 +23,16 @@
             </div>
         </header>
         <div class="main-div">         
-            <form class="form">
+            <form class="form" action="#" onreset="resetForm()" onsubmit="save()">
                 <div class="person-header">
                     <div class="person-div"> PERSON ADDRESS FORM </div>
-                    <a href="abHomePage.html"> <img src="cross.png" alt="cross" class="cross-button"></a>
+                    <a href="abHomePage.html"> <img  class="cross-button" src="cross.png" alt="cross"></a>
                 </div>
                 <div class="form-div">
                     <div class="form-internal-div">
                         <label class="label" for="fullName">Full Name</label>
                         <input class="input" type="text" id="fullName" name="fullName" placeholder="name" required>
                         <error-output class="text-error" for="text"></error-output>
-
-                    </div>
-                    <div class="form-internal-div">
-                        <label class="label" for="phoneNumber">Phone Number</label>
-                        <input class="input" type="tel" id="phoneNumber" name="number" placeholder="number" required>
-                        <error-output class="tel-error" for="text"></error-output>
-
                     </div>
                     <div class="form-internal-div">
                         <label class="label" for="address">Address</label>
@@ -45,35 +40,39 @@
                     </div>
                     <div class="select-div">
                         <div class="form-internal-div">
-                            <label class="label" for="city">City</label>
-                            <select class="select-content" name="city" id="city" required>
-                                <option value="Aligarh">Aligarh</option>
-                                <option value="Bulandshahr">Bulandshahr</option>
-                                <option value="Meerut">Meerut</option>
-                                <option value="Kanpur">Kanpur</option>
-                                <option value="Lucknow">Lucknow</option>
-                            </select>
+                           <label class="label" for="city">City</label>
+                           <select class="select-content" name="city" id="city">
+                            <option value="Aligarh">Aligarh</option>
+                            <option value="Bulandshahr">Bulandshahr</option>
+                            <option value="Meerut">Meerut</option>
+                            <option value="Kanpur">Kanpur</option>
+                            <option value="Lucknow">Lucknow</option>
+                           </select>
+                       </div>
+                       <div class="form-internal-div">
+                           <label class="label" for="state">State</label>
+                           <select class="select-content" name="state" id="state">
+                            <option value="Andra Pradesh">Andra Pradesh</option>
+                            <option value="Bihar">Bihar</option>
+                            <option value="Delhi">Delhi</option>
+                            <option value="Uttarakhand">Uttarakhand</option>
+                            <option value="Utta Pradesh">Uttar Pradesh</option>
+                           </select>
+                       </div>
+                       <div class="form-internal-div">
+                           <label class="label" for="zipcode">Pin Code</label>
+                           <input class="input zipcode-input" type="tel" id="zipcode" name="zipcode" placeholder="enter zip code" required>                 
                         </div>
-                        <div class="form-internal-div">
-                            <label class="label" for="state">State</label>
-                            <select class="select-content" name="state" id="state">
-                                <option value="Andra Pradesh">Andra Pradesh</option>
-                                <option value="Bihar">Bihar</option>
-                                <option value="Delhi">Delhi</option>
-                                <option value="Uttarakhand">Uttarakhand</option>
-                                <option value="Utta Pradesh">Uttar Pradesh</option>
-                            </select>
-                        </div>
-                        <div class="form-internal-div">
-                            <label class="label" for="zipcode">Zip Code</label>
-                            <input class="input zipcode-input" type="tel" id="zipcode" name="zipcode" placeholder="enter city code" required>
-                            <error-output class="text-error" for="text"></error-output>
+                    </div>
+                    <div class="form-internal-div">
+                        <label class="label" for="phoneNumber">Phone Number</label>
+                        <input class="input" type="text" id="phoneNumber" name="phoneNumber" placeholder="number" required>
+                        <error-output class="tel-error" for="number"></error-output>
 
-                        </div>
-                    </div>  
+                    </div>
                         <div class="button-div">
-                            <button class="add-button button" type="add">Add</button>
-                            <button class="reset-button button" type="reset">Reset</button>
+                            <button class="add-button button" type="submit" id="addButton">Add</button>
+                            <button class="reset-button button" type="reset" id="resetButton">Reset</button>
                         </div>
                 </div>
             </form>          
