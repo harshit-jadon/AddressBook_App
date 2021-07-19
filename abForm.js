@@ -6,7 +6,7 @@ window.addEventListener('DOMContentLoaded',(event) =>{
     const nameError = document.querySelector('.text-error');
     name.addEventListener('input',function(){
             try{
-                (new AddressBookData()).fullName = name.value;
+                checkName(name.value);
                 nameError.textContent ="";
             }catch(e){ nameError.textContent = e;}
     });
@@ -19,12 +19,16 @@ const save =(event) => {
     try{
         setPersonObj();
         createAndUpdateStorage();
+        resetForm();
     }catch(e){
         return;
     }
 }
 
 const setPersonObj = () => {
+    if(!Update && siteProperties.use_local_storage.match("true")){
+        personObj.id = getNewId();
+    }
     personObj._fullName = getInputValueById('#name');
     personObj._phoneNumber = getInputValueById('#number')
     personObj._address = getInputValueById('#address');
@@ -53,27 +57,19 @@ const setTextValue = (id,value) => {
 function createAndUpdateStorage(addressBookData){
     let addressBookList = JSON.parse(localStorage.getItem("AddressBookList"));
     if(addressBookList){
-        let personData = addressBookList.find(person => person._id == personObj._obj);
+        let personData = addressBookList.find(person => person.id == personObj.obj);
         if(!personData){
-            addressBookList.push(createContactData());
+            addressBookList.push(personObj);
         }else{
-            const index= addressBookList.map(person => person.id).indexOf(personData._id);
-            addressBookList.splice(index,1,createContactData(personData._id));
+            const index= addressBookList.map(person => person.id).indexOf(personData.id);
+            addressBookList.splice(index,1,personObj);
         }
     }else{
-        addressBookList =[createContactData()];
+        addressBookList =[personObj];
     }
     localStorage.setItem("AddressBookList", JSON.stringify(addressBookList));
 }
 
-createContactData = (person) =>{
-    person.fullName = personObj._fullName;
-    person.address = personObj._address;
-    person.city = personObj._city;
-    person.state = personObj._state;
-    person.pinCode = personObj._pinCode;
-    person.phoneNumber = personObj._phoneNumber;
-}
 checkForUpdate = () =>{
     const personJson = localStorage.getItem('editPerson');
     Update = personJson ? true : false;
@@ -89,6 +85,14 @@ const setForm = () => {
     setValue('#pinCode',personObj._pinCode);
     setValue('#number',personObj._phoneNumber);
 } 
+const resetForm = () => {
+    setValue('#name','');
+    setValue('#number','');
+    setValue('#address','');
+    setValue('#city','Select City');
+    setValue('#state','Select State');
+    setValue('#pinCode','Enter Zip Code');
+}
 const setValue = (id,value) => {
     const element = document.querySelector(id);
     element.value = value;
