@@ -9,15 +9,6 @@ window.addEventListener('DOMContentLoaded',(event) =>{
             }catch(e){ nameError.textContent = e;}
     });
 
-    // const phone = document.querySelector('#phoneNumber');
-    // const phoneError = document.querySelector('.tel-error');
-    // phone.addEventListener('input',function(){
-    //     try{
-    //         (new AddressBookData()).phoneNumber = phone.value;
-    //         phoneError.textContent ="";
-    //     }catch(e){ phoneError.textContent = e;}
-    // });
-
 });
 
 const save =() => {

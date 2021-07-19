@@ -6,8 +6,9 @@
         <title>AddressBook HomePage</title>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,600;1,500&display=swap">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600&display=swap">
-        <link rel="stylesheet" href="https://fonts.google.com/specimen/Lato">
+        <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
         <link rel= "stylesheet" href="abHomePage.css">
+        <script src="abHomePage.js"></script>
     </head>
     <body>
         <header class="header-content">
@@ -30,40 +31,8 @@
                 </div>
             </div>
             <div class="table-div">
-                <table class="table">
-                    <tr>
-                        <th> Fullname</th>
-                        <th> Address</th>
-                        <th> City</th>
-                        <th> State</th>
-                        <th> Zip Code</th>
-                        <th> Phone Number</th>
-                        <th> </th>
-                    </tr>
-                    <tr>
-                        <td>Harshit Jadon</td>
-                        <td>Greater Noida</td>
-                        <td>GauttamBuddh Nagar</td>
-                        <td>Uttar Pradesh</td>
-                        <td>201310</td>
-                        <td>9411411513</td>
-                        <td>
-                            <img src="delete-black-18dp.svg" alt="delete" id="1" onclick="remove(this)">
-                            <img src="create-black-18dp.svg" alt ="update" id="1" onclick="update(this)">
-                        </td>
-                    </tr>
-                    <tr >
-                        <td>Ankur Thakur</td>
-                        <td>Bulandshahr</td>
-                        <td>GauttamBuddh Nagar</td>
-                        <td>Uttar Pradesh</td>
-                        <td>200101</td>
-                        <td>9411411513</td>
-                        <td>
-                            <img src="delete-black-18dp.svg" alt="delete" id="1" onclick="remove(this)">
-                            <img src="create-black-18dp.svg" alt ="update" id="1" onclick="update(this)">
-                        </td>
-                    </tr>
+                <table class="table" id="display">
+                    
                 </table>
             </div>
         </div>

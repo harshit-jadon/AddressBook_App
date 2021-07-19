@@ -9,16 +9,9 @@ class AddressBookData{
         }
         else{throw "Incorrect name";}
     };
-    
-    // get phoneNumber(){ return this._phoneNumber};
-    // set phoneNumber(phoneNumber){  
-    //     let phoneRegex = RegExp("\\d{2}\\d{10}");
-    //     if(phoneRegex.test(phoneNumber)){
-    //         this._phoneNumber = phoneNumber;
-    //     }else{throw "Incorrect PhoneNumber";}
-    //     };
     get phoneNumber(){ return this._phoneNumber};
     set phoneNumber(phoneNumber){  this._phoneNumber = phoneNumber;};
+    
     get address(){ return this._address};
     set address(address){  this._address = address};
 
