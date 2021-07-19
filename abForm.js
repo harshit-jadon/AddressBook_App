@@ -18,11 +18,32 @@ const save =(event) => {
     event.stopPropagation();
     try{
         setPersonObj();
-        createAndUpdateStorage();
-        resetForm();
+        if(siteProperties.use_local_storage.match("true")){
+            createAndUpdateStorage();
+            resetForm();
+            window.location.replace(siteProperties.home_page);
+        }else{
+            createOrUpdatePerson();
+        }
     }catch(e){
         return;
     }
+}
+const createOrUpdatePerson = () => {
+    let postURL = siteProperties.server_url;
+    let methodCall = "POST";
+    if(Update){
+        methodCall = "PUT";
+        postURL = postURL+ "/"+personObj.id.toString();
+    }
+    makeServiceCall(methodCall,postURL,true,personObj)
+     .then(responseText => {
+         resetForm();
+         window.location.replace(siteProperties.home_page);
+     })
+     .catch(error => {
+         throw error;
+     })
 }
 
 const setPersonObj = () => {
@@ -30,7 +51,7 @@ const setPersonObj = () => {
         personObj.id = getNewId();
     }
     personObj._fullName = getInputValueById('#name');
-    personObj._phoneNumber = getInputValueById('#number')
+    personObj._phoneNumber = getInputValueById('#number');
     personObj._address = getInputValueById('#address');
     personObj._city = getInputValueById('#city');
     personObj._state = getInputValueById('#state');

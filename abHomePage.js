@@ -1,13 +1,33 @@
 let personDataList;
 window.addEventListener('DOMContentLoaded',(event) => {
-    personDataList = getPersonDataFromStorage();
-    createInnerHtml();
-    localStorage.removeItem('editPerson');
+    if(siteProperties.use_local_storage.match("true")){
+        getPersonDataFromStorage();
+    }else{
+        getPersonDataFromServer();
+    }
+
 });
 
 const getPersonDataFromStorage = () => {
-    return localStorage.getItem('AddressBookList') ?
-                        JSON.parse(localStorage.getItem('AddressBookList')) : [];
+    personDataList =  localStorage.getItem('AddressBookList') ? JSON.parse(localStorage.getItem('AddressBookList')) : [];
+    processPersonDataResponse();
+}
+const processPersonDataResponse = () => {
+    createInnerHtml();
+    localStorage.removeItem('editPerson');
+}
+
+const getPersonDataFromServer = () => {
+    makeServiceCall("GET",siteProperties.server_url,true).then(responseText => {
+         personDataList = JSON.parse(responseText);
+            processPersonDataResponse();
+    })
+    .catch(error => {
+        console.log("GET Error Status "+JSON.stringify(error));
+        personDataList = [];
+        processPersonDataResponse();
+    });
+
 }
 
 const createInnerHtml = () => {
@@ -36,11 +56,23 @@ const createInnerHtml = () => {
 const remove = (node) => {
     let personData = personDataList.find(person => person.id == node.id);
     if(!personData) return;
+
     const index = personDataList.map(person => person.id)
                                 .indexOf(personData.id);
     personDataList.splice(index,1);
-    localStorage.setItem("AddressBookList",JSON.stringify(personList));
-    createInnerHtml();
+    if(siteProperties.use_local_storage.match("true")){
+        localStorage.setItem("AddressBookList",JSON.stringify(personDataList));
+        createInnerHtml();
+    }else{
+        const deleteURL = siteProperties.server_url+"/"+personData.id.toString();
+        makeServiceCall("DELETE",deleteURL,false)
+         .then(responseText => {
+             createInnerHtml();
+         })
+         .catch(error => {
+             console.log("Delete error status :"+JSON.stringify(error));
+         });
+    }   
 } 
 const update = (node) => {
     let personData = personDataList.find(person => person.id == node.id);
