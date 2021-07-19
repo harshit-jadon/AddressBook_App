@@ -2,6 +2,7 @@ let personDataList;
 window.addEventListener('DOMContentLoaded',(event) => {
     personDataList = getPersonDataFromStorage();
     createInnerHtml();
+    localStorage.removeItem('editPerson');
 });
 
 const getPersonDataFromStorage = () => {
@@ -41,3 +42,9 @@ const remove = (node) => {
     localStorage.setItem("AddressBookList",JSON.stringify(personList));
     createInnerHtml();
 } 
+const update = (node) => {
+    let personData = personDataList.find(person => person._id == node.id);
+    if(!personData) return;
+    localStorage.setItem('editPerson',JSON.stringify(personData));
+    window.location.replace(siteProperties.form);
+}
